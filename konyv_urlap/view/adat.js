@@ -1,29 +1,29 @@
 export const adatLeiras ={
-    vezetekNev: {
-        megjelenes: "Vezeték név",
+    cim: {
+        megjelenes: "Cím",
         tipus: "text",
-        placeholder: "Valaki ",
+        placeholder: "Valami",
         pattern: "^[A-Z][a-z]{3}",
         value:"",
-        szoveg: "Legalább 3 betű, a névnek nagybetűvel kell kezdődnie!",
+        szoveg: "Legalább 3 betű, a címnek nagybetűvel kell kezdődnie!",
         required: true,
     },
-    keresztNev: {
-        megjelenes: "Kereszt név",
+    szerzo: {
+        megjelenes: "Szerzo",
         tipus: "text",
-        placeholder: "Vagyok",
+        placeholder: "Szerző",
         pattern: "[A-Z][a-z]{3}",
         value:"",
         szoveg: "Legalább 3 betű, a névnek nagybetűvel kell kezdődnie!",
         required: true,
     },
    
-    szul: {
-        megjelenes: "Születési év",
+    kiadas: {
+        megjelenes: "Kiadás éve",
         tipus: "number",
         placeholder:"2000",
         value:"",
-        pattern:{ min: "1000", max: "2023" },
+        pattern:{ min: "1000", max: "2024" },
         szoveg: "1000 és 2023 közötti számot adhat meg!",
         required: true,
     },

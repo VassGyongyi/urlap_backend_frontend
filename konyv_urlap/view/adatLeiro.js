@@ -1,5 +1,5 @@
 export const adatLeiro={
-    id: "ID",
+    id: "id",
     cim: "Cím",
     szerzo: "Szerző",
     kiadas: "Kiadás"

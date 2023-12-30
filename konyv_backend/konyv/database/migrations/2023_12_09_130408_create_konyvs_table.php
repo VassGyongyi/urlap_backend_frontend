@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('cim', 32);
             $table->string('szerzo');
-            $table->date('kiadas');
+            $table->year('kiadas');
         });
     }
 

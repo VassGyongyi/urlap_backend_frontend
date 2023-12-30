@@ -21,30 +21,48 @@ export default class DataService
             // always executed
           });
       }
-      postAxiosData(url, data) {
+      postAxiosData(url, data, callback) {
         console.log(data)
         axios
-        .post(url, data)
+        .post(url, {
+          cim:data.cim,
+          szerzo:data.szerzo,
+          kiadas:data.kiadas
+        })
         .then((response)=>{
-          console.log("RESP", response);
+          console.log("RESP", response)
+          callback(response.data);
         })
         .catch((error)=>{
           console.log("hiba", error);
         })
       }
     
-      putAxiosData(url, data) {
+      putAxiosData(url, id, data, callback) {
         axios
-        .put(`${url}/${id}`, data)
-        .then((response)=>{
-          console.log("RESP",response)
-        })
+          .put(`${url}/${id}`, data)  
+          .then(function (response) {
+            console.log("RESP", response);
+            callback(response.data);
+          })
+          .catch(function (error) {
+            console.log("hiba", error);
+          });
       }
       
-      deleteAxiosData(url, id) {
+      deleteAxiosData(url, id,  callback) {
+        //console.log(data)
+     
        axios
        .delete(`${url}/${id}`)
-       .then((response)=>{console.log("RESP",response)})
+       .then(function(response)
+       {console.log("RESP",response)
+          callback(response.data);
+       })
+      
+      .catch((error)=>{
+        console.error("hiba", error);
+      });
       
       }
 }

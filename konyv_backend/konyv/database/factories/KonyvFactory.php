@@ -17,9 +17,9 @@ class KonyvFactory extends Factory
     public function definition(): array
     {
         return [
-            'cim' => fake()->text(32),
-            'szerzo' => fake()->name(),
-            'kiadas' => fake()->date(),
+            'cim' => fake('hu_HU')->text(32),
+            'szerzo' => fake('hu_HU')->name(),
+            'kiadas' => fake()->year()
         ];
     }
 }

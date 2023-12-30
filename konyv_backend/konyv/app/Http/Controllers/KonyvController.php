@@ -25,7 +25,7 @@ class KonyvController extends Controller
     public function store(Request $request)
     {
         $konyv = new Konyv();
-        $konyv->nev = $request->nev;
+        $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
 
         $konyv->kiadas = $request->kiadas;
@@ -39,17 +39,31 @@ class KonyvController extends Controller
     public function update(Request $request, $id)
     {
         $konyv = Konyv::find($id);
+        $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
 
         $konyv->kiadas = $request->kiadas;
 
         $konyv->save();
+        return  response()->json(Konyv::all());
     }
-    public function destroy($id)
+   /*  public function destroy($id)
     {
         Konyv::find($id)->delete();
-    }
+    } */
+    public function destroy($id)
+    {
+        $konyv = Konyv::find($id);
+    
+        if ($konyv) {
+            $konyv->delete();
+            return
 
+             response()->json(Konyv::all());
+        } else {
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */

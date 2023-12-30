@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Konyv extends Model
 {
     use HasFactory;
-    protected  $primaryKey = 'konyv_id';
+    protected  $primaryKey = 'id';
     protected $fillable = [
         
         'cim',
         'szerzo',
         'kiadas',
+    ];
+    protected $hidden= [
+        'created_at',
+        'updeted_at'
     ];
 }

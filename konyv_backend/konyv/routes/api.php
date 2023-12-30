@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('konyvs',[KonyvController::class,'index']);
-Route::get('konyvs/{id}',[KonyvController::class,'show']);
-Route::post('konyvs',[KonyvController::class,'store']);
-Route::put('konyvs/{update}',[KonyvController::class,'update']);
-Route::delete('konyvs/{destroy}',[KonyvController::class,'destroy']);
+Route::get('/konyvs',[KonyvController::class,'index']);
+Route::get('/konyvs/{id}',[KonyvController::class,'show']);
+Route::post('/konyvs',[KonyvController::class,'store']);
+Route::put('/konyvs/{id}',[KonyvController::class,'update']);
+Route::delete('/konyvs/{id}',[KonyvController::class,'destroy']);
