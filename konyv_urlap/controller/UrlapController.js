@@ -8,15 +8,11 @@ class UrlapController {
   constructor() {
     this.dataService = new DataService();
     new UrlapView($(".urlap"), adatLeiras);
-
     this.dataService.getAxiosData("/api/konyvs", this.megjelenit);
 
     $(window).on("ujAdatHozzaAdasa", (event) => {
-      if (this.formValid()) {
+    
         this.dataService.postAxiosData("/api/konyvs", event.detail, this.megjelenit);
-      } else {
-        console.log("Az adatok nem validak!");
-      }
     });
 
     $(window).on("sorTorles", (event) => {
@@ -24,10 +20,12 @@ class UrlapController {
     });
 
     $(window).on("sorSzerkesztes", (event) => {
-      //this.formMegjelenit();
+      this.formMegjelenit();
       const formData = event.detail.formData;
       const urlapView = new UrlapView($(".edit"), formData);
-      urlapView.betoltAdatok(formData);
+      console.log(formData)
+      urlapView.betoltAdatok(formData); 
+           
     });
   }
 
@@ -41,11 +39,7 @@ class UrlapController {
 
     new UrlapView($(".urlap"), adatLeiras);
   }
-
-  /* formValid() {
-    
-    return true; 
-  } */
+  
 }
 
 export default UrlapController;

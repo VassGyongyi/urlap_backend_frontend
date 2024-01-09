@@ -27,10 +27,9 @@ class KonyvController extends Controller
         $konyv = new Konyv();
         $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
-
         $konyv->kiadas = $request->kiadas;
-
         $konyv->save();
+       // return  response()->json(Konyv::all());
     }
 
     /**
@@ -41,11 +40,9 @@ class KonyvController extends Controller
         $konyv = Konyv::find($id);
         $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
-
         $konyv->kiadas = $request->kiadas;
-
         $konyv->save();
-        return  response()->json(Konyv::all());
+       return  response()->json(Konyv::all());
     }
    /*  public function destroy($id)
     {

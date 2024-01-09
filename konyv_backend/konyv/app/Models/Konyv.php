@@ -17,6 +17,6 @@ class Konyv extends Model
     ];
     protected $hidden= [
         'created_at',
-        'updeted_at'
+        'updated_at'
     ];
 }
