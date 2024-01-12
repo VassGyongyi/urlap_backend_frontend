@@ -2,6 +2,7 @@ import DataService from "../Model/DataService.js";
 import UrlapView from "../view/UrlapView.js";
 import TablaView from "../view/TablaView.js";
 import { adatLeiras } from "../view/adat.js";
+import FormUrlapView from "../view/FormUrlapView.js";
 
 
 class UrlapController {
@@ -12,7 +13,7 @@ class UrlapController {
 
     $(window).on("ujAdatHozzaAdasa", (event) => {
     
-        this.dataService.postAxiosData("/api/konyvs", event.detail, this.megjelenit);
+        this.dataService.postAxiosData("/api/konyvs", event.detail,this.megjelenit);
     });
 
     $(window).on("sorTorles", (event) => {
@@ -21,11 +22,11 @@ class UrlapController {
 
     $(window).on("sorSzerkesztes", (event) => {
       this.formMegjelenit();
-      const formData = event.detail.formData;
-      const urlapView = new UrlapView($(".edit"), formData);
+      let formData = event.detail.formData;
+      let formUrlapView = new FormUrlapView($(".edit"), formData);
       console.log(formData)
-      urlapView.betoltAdatok(formData); 
-           
+      formUrlapView.betoltAdatok(formData); 
+      this.dataService.putAxiosData("/api/konyvs", formData, this.megjelenit);      
     });
   }
 

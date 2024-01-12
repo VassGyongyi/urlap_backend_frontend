@@ -1,7 +1,7 @@
 import TextUrlapView from "./TextUrlapView.js";
 import NumberUrlapView from "./NumberUrlapView.js"
 
-class UrlapView {
+class FormUrlapView {
     #formAdat = {};
     #inputElemObjektumokLista = [];
     #urlapValid = true;
@@ -12,11 +12,7 @@ class UrlapView {
       this.formElem = szuloElem.find("form");
      
       this.htmlOsszeallit(adatLeiras);
-       this.formElem.append(
-        `<div class="mb-3 mt-3">
-          <input type="submit" value="Küld" class="kuld_gomb">
-        </div>`
-      );   
+      
       this.submitElem = this.formElem.find("#submit");
   
       this.submitElem.on("click", (event) => {
@@ -60,6 +56,17 @@ class UrlapView {
       }
              
     }
+  
+  betoltAdatok(formData) {
+      this.#inputElemObjektumokLista.forEach((elem) => {
+        formData.preventDefault();
+        console.log(formData)
+        if (formData[elem.key]) {
+            console.log(formData[elem.key])  
+          elem.setValue(formData[elem.key]);
+        }
+      });
+    }
   }
   
-  export default UrlapView;
+  export default FormUrlapView;

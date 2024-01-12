@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('konyvs', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('cim', 32);
+            
+            $table->string('cim');
             $table->string('szerzo');
             $table->year('kiadas');
+            $table->timestamps();
         });
     }
 

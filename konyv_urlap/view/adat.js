@@ -9,7 +9,7 @@ export const adatLeiras ={
         required: true,
     },
     szerzo: {
-        megjelenes: "Szerzo",
+        megjelenes: "Szerző",
         tipus: "text",
         placeholder: "Szerző",
         pattern: "[A-Z][a-z]{3,}",
@@ -28,7 +28,4 @@ export const adatLeiras ={
         required: true,
     },
 };
-/* export const adatLeiras2={
-    cim: "Cím",
-    szerzo: "Szerző",
-}; */
+

@@ -29,31 +29,38 @@ export default class SorView {
 
     txt += `<td class="torol" id="torol_${this.index}">❌</td><td class="szerkeszt" id="szerkeszt_${this.index}">✏</td></tr>`;
     this.szuloElem.append(txt);
+    let mentesGomb = $(
+      `<button id='mentes_${this.index}' class='mentes' type='button'>Mentés</button>`
+    );
+   //this.szuloElem.append(mentesGomb);
   }
 
   formOsszerak() {
     this.#editForm = $("<form class='szerkeszt form-group'></form>");
     for (const key in this.#obj) {
       if (key in adatLeiro || key === adatLeiro.id) {
+        const labelField =$(`<div for="for"></div>`)
         const inputField = $(
-          `<input type="text" class="form-text text- muted"  name="${key}" value="${
+          `<div class="row"><input type="text" class='form-control form-control-lg'  name="${key}" value="${
             this.#obj[key]
-          }">`
+          }"></div><br>`
         );
+        this.#editForm.append(labelField);
         this.#editForm.append(inputField);
-      }
-    }
-
-    const mentesGomb = $(
-      "<button id='mentes_${this.index}' class='mentes' type='submit'>Mentés</button>"
+        
+    }}
+    $(".kuld_gomb").remove()
+    let mentesGomb = $(
+      `<button id='mentes_${this.index}' class='mentes' type='button'>Mentés</button>`
     );
     this.#editForm.append(mentesGomb);
     mentesGomb.click(() => {
       this.mentesClickHandler();
       this.#editForm.remove();
     });
-
-    $(".edit").empty().append(this.#editForm);
+    
+    $(`.edit`).empty().append(this.#editForm);
+   
   }
 
   getId() {
@@ -62,6 +69,7 @@ export default class SorView {
 
   #esemenyTrigger(esemenyNev) {
     const e = new CustomEvent(esemenyNev, { detail: { id: this.getId() } });
+    
     window.dispatchEvent(e);
   }
 
@@ -75,14 +83,21 @@ export default class SorView {
   }
 
   mentesClickHandler() {
-    const formData = {};
-    this.#editForm.find("input").each(function () {
-      formData[this.name] = $(this).val();
+    let formData = {};
+    this.#editForm.find("input").each((index, element) => {
+      if (element.type !== "submit") {
+        formData[element.name] = $(element).val();
+        /*  this.#editForm.find("input").each(function () {
+      formData[this.name] = $(this).val(); */
+        console.log(formData[element.name]);
+      }
     });
 
     const e = new CustomEvent("sorSzerkesztes", {
       detail: { id: this.getId(), formData },
     });
+    console.log(formData)
+    e.preventDefault();
     window.dispatchEvent(e);
   }
 }

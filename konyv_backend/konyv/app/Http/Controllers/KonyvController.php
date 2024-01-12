@@ -29,20 +29,20 @@ class KonyvController extends Controller
         $konyv->szerzo = $request->szerzo;
         $konyv->kiadas = $request->kiadas;
         $konyv->save();
-       // return  response()->json(Konyv::all());
+        //return  response()->json(Konyv::all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
         $konyv = Konyv::find($id);
         $konyv->cim = $request->cim;
         $konyv->szerzo = $request->szerzo;
         $konyv->kiadas = $request->kiadas;
         $konyv->save();
-       return  response()->json(Konyv::all());
+      // return  response()->json(Konyv::all());
     }
    /*  public function destroy($id)
     {

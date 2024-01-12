@@ -7,10 +7,7 @@ export default class DataService
         axios
           .get(url)
           .then(function (response) {
-            // handle success
-           // console.log(response);
-            //console.log(response.data);
-           // console.log(response.data.irok); az irok lista kiiratása
+           
            callback(response.data) //meghívja az adatokkal
           })
           .catch(function (error) {
@@ -21,14 +18,15 @@ export default class DataService
             // always executed
           });
       }
-      postAxiosData(url, data, callback) {
+      postAxiosData(data, url,  callback) {
         console.log(data)
         axios
-        .post(url, {
+        .post(url,{
           cim:data.cim,
           szerzo:data.szerzo,
-          kiadas:data.kiadas
-        })
+          kiadas:data.kiadas} 
+        )
+        
         .then((response)=>{
           console.log("RESP", response)
           callback(response.data);
@@ -40,7 +38,11 @@ export default class DataService
     
       putAxiosData(url, id, data, callback) {
         axios
-          .put(`${url}/${id}`, data)  
+        //console.log(data)
+          .put(`${url}/${id}`,{
+            cim:data.cim,
+            szerzo:data.szerzo,
+            kiadas:data.kiadas} )  
           .then(function (response) {
             console.log("RESP", response);
             callback(response.data);
